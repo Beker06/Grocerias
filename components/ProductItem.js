@@ -5,15 +5,17 @@ import React from 'react';
 export default function ProductItem({ product, addToCartHandler }) {
   return (
     <div className="card">
-      <Link href={`/product/${product.slug}`}>
-        <a>
-          <img
-            src={product.image}
-            alt={product.name}
-            className="rounded shadow object-cover h-64 w-full"
-          />
-        </a>
-      </Link>
+      <div>
+        <Link href={`/product/${product.slug}`}>
+          <a>
+            <img
+              src={product.image}
+              alt={product.name}
+              className="rounded shadow"
+            />
+          </a>
+        </Link>
+      </div>
       <div className="flex flex-col items-center justify-center p-5">
         <Link href={`/product/${product.slug}`}>
           <a>

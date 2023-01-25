@@ -7,9 +7,13 @@ import { ToastContainer } from 'react-toastify';
 import { Menu } from '@headlessui/react';
 import 'react-toastify/dist/ReactToastify.css';
 import { Store } from '../utils/Store';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import DropdownLink from './DropdownLink';
 import { useRouter } from 'next/router';
 import { SearchIcon } from '@heroicons/react/outline';
+import LogoHorizontal from "../public/img/LogoTrans.png";
+import Image from 'next/image';
 
 export default function Layout({ title, children }) {
   const { status, data: session } = useSession();
@@ -38,19 +42,27 @@ export default function Layout({ title, children }) {
   return (
     <>
       <Head>
-        <title>{title ? title + ' - Amazona' : 'Amazona'}</title>
-        <meta name="description" content="Ecommerce Website" />
+      <title>{title ? title + " | Grocerias" : "Grocerias"}</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Punto de Venta Web" />
+        <meta
+          name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0"
+        />
       </Head>
 
       <ToastContainer position="bottom-center" limit={1} />
 
       <div className="flex min-h-screen flex-col justify-between ">
         <header>
-          <nav className="flex h-12 items-center px-4 justify-between shadow-md">
-            <Link href="/">
-              <a className="text-lg font-bold">amazona</a>
-            </Link>
+          <nav className="fixed z-10 flex w-full h-20 items-center px-4 justify-between shadow-md bg-white">
+            <div className='w-40'>
+              <Link href="/">
+                <a>
+                  <Image src={LogoHorizontal} alt="grocerias" />
+                </a>
+              </Link>
+            </div>
             <form
               onSubmit={submitHandler}
               className="mx-auto  hidden w-full justify-center md:flex"
@@ -62,24 +74,28 @@ export default function Layout({ title, children }) {
                 placeholder="Search products"
               />
               <button
-                className="rounded rounded-tl-none rounded-bl-none bg-amber-300 p-1 text-sm dark:text-black"
+                className="rounded rounded-tl-none rounded-bl-none bg-azul-fondo p-1 text-sm dark:text-black"
                 type="submit"
                 id="button-addon2"
               >
                 <SearchIcon className="h-5 w-5"></SearchIcon>
               </button>
             </form>
-            <div>
+            <div className="h-full flex flex-row items-center">
               <Link href="/cart">
-                <a className="p-2">
-                  Cart
+                <a className="m-1 p-3 rounded-full bg-azul-fondo flex justify-center items-center">
+                  <FontAwesomeIcon
+                    icon={faCartShopping}
+                    color="#000"
+                    size="xl"
+                  />
                   {cartItemsCount > 0 && (
-                    <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                    <span className="ml-2 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
                       {cartItemsCount}
                     </span>
                   )}
                 </a>
-              </Link>
+                </Link>
 
               {status === 'loading' ? (
                 'Loading'
@@ -131,9 +147,9 @@ export default function Layout({ title, children }) {
             </div>
           </nav>
         </header>
-        <main className="container m-auto mt-4 px-4">{children}</main>
+        <main className="container m-auto mt-[120px] px-4">{children}</main>
         <footer className="flex h-10 justify-center items-center shadow-inner">
-          <p>Copyright © 2022 Amazona</p>
+          <span>Copyright © 2022 Grocerias</span>
         </footer>
       </div>
     </>

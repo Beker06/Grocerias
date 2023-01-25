@@ -19,22 +19,20 @@ a {
 }
 
 .card {
-  @apply mb-5  block   rounded-lg border border-gray-200  shadow-md;
+  @apply mb-5  block  rounded-lg border border-gray-200  shadow-md;
 }
 
 .primary-button {
-  @apply rounded bg-amber-300 py-2 px-4 shadow outline-none hover:bg-amber-400  active:bg-amber-500;
+  @apply rounded bg-azul-fondo py-2 px-4 shadow outline-none hover:bg-azul-hover  active:bg-azul-activo;
 }
+
+input, select, textarea{
+  @apply rounded border p-2 outline-none ring-indigo-300 focus:ring;
+}
+
 .default-button {
   @apply rounded bg-gray-100 py-2  px-4 text-black shadow outline-none hover:bg-gray-200  active:bg-gray-300;
 }
-
-input,
-select,
-textarea {
-  @apply rounded border p-2  outline-none ring-indigo-300  focus:ring;
-}
-
 .dropdown-link {
   @apply flex p-2 hover:bg-gray-200;
 }
