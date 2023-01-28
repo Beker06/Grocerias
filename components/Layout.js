@@ -13,6 +13,7 @@ import DropdownLink from './DropdownLink';
 import { useRouter } from 'next/router';
 import { SearchIcon } from '@heroicons/react/outline';
 import LogoHorizontal from "../public/img/LogoTrans.png";
+import Bars from "../public/icons/bars2.png"
 import Image from 'next/image';
 
 export default function Layout({ title, children }) {
@@ -55,8 +56,11 @@ export default function Layout({ title, children }) {
 
       <div className="flex min-h-screen flex-col justify-between ">
         <header>
-          <nav className="fixed z-10 flex w-full h-20 items-center px-4 justify-between shadow-md bg-white">
-            <div className='w-40'>
+          <nav className="fixed z-10 flex w-full h-[6rem] items-center px-4 justify-between shadow-md bg-white">
+            <div className='w-[3rem] ml-8 cursor-pointer'>
+              <Image src={Bars} alt="bars" />
+            </div>
+            <div className='w-[14rem] ml-10'>
               <Link href="/">
                 <a>
                   <Image src={LogoHorizontal} alt="grocerias" />
@@ -70,7 +74,7 @@ export default function Layout({ title, children }) {
               <input
                 onChange={(e) => setQuery(e.target.value)}
                 type="text"
-                className="rounded-tr-none rounded-br-none p-1 text-sm   focus:ring-0"
+                className="rounded-tr-none rounded-br-none py-1 px-2 text-[16px] font-thin w-[24rem] h-[3rem]   focus:ring-0"
                 placeholder="Search products"
               />
               <button
@@ -78,19 +82,19 @@ export default function Layout({ title, children }) {
                 type="submit"
                 id="button-addon2"
               >
-                <SearchIcon className="h-5 w-5"></SearchIcon>
+                <SearchIcon className="h-7 w-9"></SearchIcon>
               </button>
             </form>
-            <div className="h-full flex flex-row items-center">
+            <div className="h-full flex flex-row items-center text-black">
               <Link href="/cart">
-                <a className="m-1 p-3 rounded-full bg-azul-fondo flex justify-center items-center">
+                <a className="m-5 p-4 relative rounded-full bg-azul-fondo flex justify-center items-center">
                   <FontAwesomeIcon
                     icon={faCartShopping}
                     color="#000"
                     size="xl"
                   />
                   {cartItemsCount > 0 && (
-                    <span className="ml-2 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                    <span className="absolute top-[-10px] right-[-5px] rounded-full bg-red-600 px-2 py-1 text-xs font-normal text-white">
                       {cartItemsCount}
                     </span>
                   )}
@@ -101,7 +105,7 @@ export default function Layout({ title, children }) {
                 'Loading'
               ) : session?.user ? (
                 <Menu as="div" className="relative inline-block">
-                  <Menu.Button className="text-blue-600">
+                  <Menu.Button className="text-black">
                     {session.user.name}
                   </Menu.Button>
                   <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
@@ -141,7 +145,7 @@ export default function Layout({ title, children }) {
                 </Menu>
               ) : (
                 <Link href="/login">
-                  <a className="p-2">Login</a>
+                  <a className="p-2 text-black">Login</a>
                 </Link>
               )}
             </div>
@@ -149,7 +153,7 @@ export default function Layout({ title, children }) {
         </header>
         <main className="container m-auto mt-[120px] px-4">{children}</main>
         <footer className="flex h-10 justify-center items-center shadow-inner">
-          <span>Copyright © 2022 Grocerias</span>
+          <span>Copyright © 2023 Grocerias</span>
         </footer>
       </div>
     </>

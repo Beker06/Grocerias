@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useContext } from 'react';
-import { XCircleIcon } from '@heroicons/react/outline';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
 import { useRouter } from 'next/router';
@@ -51,7 +52,7 @@ function CartScreen() {
                   <tr key={item.slug} className="border-b">
                     <td>
                       <Link href={`/product/${item.slug}`}>
-                        <a className="flex items-center">
+                        <a className="flex items-center text-black hover:text-[#70d4aa]">
                           <Image
                             src={item.image}
                             alt={item.name}
@@ -80,7 +81,11 @@ function CartScreen() {
                     <td className="p-5 text-right">${item.price}</td>
                     <td className="p-5 text-center">
                       <button onClick={() => removeItemHandler(item)}>
-                        <XCircleIcon className="h-5 w-5"></XCircleIcon>
+                        <FontAwesomeIcon
+                          icon={faTrashCan}
+                          color={"#70d4aa"}
+                          size="lg"
+                        />
                       </button>
                     </td>
                   </tr>

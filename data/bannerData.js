@@ -21,6 +21,6 @@ export default [
     },
     {
         id: 6,
-        img: "Banner/banner6.png",
+        img: "Banner/banner5.png",
     },
 ];

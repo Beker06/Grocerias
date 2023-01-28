@@ -33,7 +33,11 @@ export default function ProductScreen(props) {
   return (
     <Layout title={product.name}>
       <div className="py-2">
-        <Link href="/">back to products</Link>
+        <Link href="/">
+          <a>
+            <Image width='42px' height='42px' src="/../public/icons/left-arrow.png" alt='left-arrow'/>
+          </a>
+        </Link>
       </div>
       <div className="grid md:grid-cols-4 md:gap-3">
         <div className="md:col-span-2">

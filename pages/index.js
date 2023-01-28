@@ -8,9 +8,10 @@ import db from '../utils/db';
 import { Store } from '../utils/Store';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Link from 'next/link';
+import dataBanner from '../data/bannerData'
+import Image from 'next/image';
 
-export default function Home({ products, featuredProducts }) {
+export default function Home({ products}) {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
 
@@ -29,19 +30,18 @@ export default function Home({ products, featuredProducts }) {
 
   return (
     <Layout title="Home Page">
-      <Carousel showThumbs={false} autoPlay>
-        {featuredProducts.map((product) => (
-          <div key={product._id}>
-            <Link href={`/product/${product.slug}`} passHref>
-              <a className="flex">
-                <img src={product.banner} alt={product.name} />
-              </a>
-            </Link>
-          </div>
-        ))}
-      </Carousel>
-      <h2 className="h2 my-4">Latest Products</h2>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      <div>
+        <Carousel width="100%" stopOnHover={false} showThumbs={false} infiniteLoop={true} showStatus={false} autoPlay>
+          {dataBanner.map((product, id) => (
+            <div key={`gallery-banner-${id + 1}`}>
+              <Image src={require(`../public/img/${product.img}`)} alt="banner grocerias"/>
+            </div>
+          ))}
+        </Carousel>
+      </div>
+      
+      <h1 className="text-[24px] my-4">Mas Vendidos</h1>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-5 ">
         {products.map((product) => (
           <ProductItem
             product={product}
